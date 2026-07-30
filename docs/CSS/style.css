@@ -7,41 +7,37 @@
 
 /* estilização do corpo do site */
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Times New Roman, serif;
     background-image: radial-gradient(circle at center, #0F1B42, #090d25, black);
     background-attachment: fixed;
-}
-
-/* estilização do título */
-h1 {
-    color: rgb(201, 197, 197);
-    text-align: center;
-    margin-top: 60px;
-    font-size: 50px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-/* estilização do parágrafo */
-p {
-   color: rgb(201, 197, 197);
-   text-align: center;
-   margin-top: 50px;
+    color: #fff;
+    font-size: 25px;
 }
 
 /* estilização da barra de navegação da pagina inicial */
-.menu-inicial {
-    background-image: radial-gradient(circle at bottom, #0F1B42, #090d25, black);
+.barra-inicial {
+    margin-top: 6px;
     padding: 15px;
     display: flex;
-    justify-content: left;
-    align-items: center;
+    justify-content: space-between;
+    font-size: 30px;
 }
 
+/* estilização da linha horizontal */
+hr {
+    margin-top: 2px;
+    border: 0.2% solid #fff;
+    width: 100vw;
+    position: relative;
+}
+
+/* estilização dos links do nac */
 a {
+    margin-top: 20px;
     color: rgb(201, 197, 197);
     text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
+    font-size: 20px;
+    padding: 18px;
     
 }
 
@@ -49,4 +45,32 @@ li {
     list-style: none;
     text-align: left;
     display: inline-block;
+}
+
+/* estilização do título */
+#tit-inicial {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 60px;
+}
+
+/* estilização do subtítulo */
+#subt-inicial {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 30px;
+}
+
+#but-inicial {
+    text-align: center;
+    background-color: blue;
+    border: none;
+    border-radius: 10px;
+    height: 60px;
+    width: 170px;
+    color: #fff;
+    align-items: center;
+    margin-top: 100px;
+    font-size: 20px;
+    font-weight: bold;
 }
