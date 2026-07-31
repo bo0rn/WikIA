@@ -23,6 +23,26 @@ body {
     font-size: 30px;
 }
 
+/* estilização da div do conteudo informativo */
+.conteudo {
+    padding-left: 10%;
+    padding-right: 20%;
+    height: 100vw;
+    text-align: justify;
+    padding-top: 10em;
+}
+
+/* estilização do título */
+h1 {
+    font-weight: bold;
+    font-size: 60px;
+}
+
+/* estilização do paragrafo */
+p {
+    font-size: 30px;
+}
+
 /* estilização da linha horizontal */
 hr {
     margin-top: 2px;
@@ -61,6 +81,7 @@ li {
     font-size: 30px;
 }
 
+/* botao tela inicial */
 #but-inicial {
     text-align: center;
     background-color: blue;
