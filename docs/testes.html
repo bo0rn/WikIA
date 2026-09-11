@@ -3,21 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de testes</title>
+    <title>Página de Testes</title>
     <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <h2>Seja bem vindo ao seu Agente de IA wikIA</h2>
+        <div class="menu-bar">
+            <h1 class="logo-text">WikIA</h1>
+            <div id="container-input">
+                <div class="input-group">
+                    <div class="input-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <input 
+                        id="search-input" 
+                        type="text" 
+                        class="input-field" 
+                        placeholder="Pesquisar"
+                    >
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="historia.html">História da IA</a></li>
+                </ul>
+            </nav>
+        </div>
+        <hr>
+
     </header>
     <main>
-        <input type="text" id="caixa-input"
-        placeholder="Digite sua Mensagem:"
-        maxlength="1000">
-    </main>
-    <footer>
+        <div class="containerConteudo">
 
-    </footer>
+            <div class="bloco-conteudo">
+                <h1>Testes</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="bloco-conteudo">
+                <h1>Testes</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="bloco-conteudo">
+                <h1>Testes</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div> 
+
+            <div class="bloco-conteudo">
+                <h1>Testes</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="bloco-conteudo">
+                <h1>Testes</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        
+        </div>   
+    </main>            
+    
+    <div class="botoes-navegacao">
+        <button class="hiden" id="btn-cima" aria-label="Ir para cima">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+
+        <button class="hiden" id="btn-baixo" aria-label="Ir para baixo">
+            <i class="fa-solid fa-arrow-down"></i>
+        </button>
+    </div>
+
     <script src="./JS/script.js"></script>
 </body>
 </html>

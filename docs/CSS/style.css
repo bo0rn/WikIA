@@ -1,73 +1,53 @@
-/* estilização dos elementos HTML */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* estilização do corpo do site */
 body {
-    font-family: Times New Roman, serif;
+    width: 100vw;
+    height: 100vh;
     background-image: radial-gradient(circle at center, #0F1B42, #090d25, black);
     background-attachment: fixed;
     color: #fff;
-    font-size: 25px;
+    font-size: 10px;
 }
 
-/* estilização da barra de navegação da pagina inicial */
-.barra-inicial {
-    margin-top: 6px;
-    padding: 15px;
+/* estilização do container de menu */
+.menu-bar {
+    min-height: 10vh;
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-text {
     font-size: 30px;
-}
-
-/* estilização da div do conteudo informativo */
-.conteudo {
-    padding-left: 10%;
-    padding-right: 20%;
-    height: 100vw;
-    text-align: justify;
-    padding-top: 10em;
-}
-
-/* estilização do título */
-h1 {
     font-weight: bold;
-    font-size: 60px;
-}
-
-/* estilização do subtitulo */
-h2 {
-    font-weight: bold;
-    font-size: 30px;
-    margin-top: 50px;
-    margin-left: 130px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-/* estilização do paragrafo */
-p {
-    font-size: 30px;
+    color: #fff;
 }
 
 /* estilização da linha horizontal */
 hr {
     margin-top: 2px;
-    border: 0.2% solid #fff;
+    border: 1px solid #fff;
     width: 100vw;
     position: relative;
 }
 
-/* estilização dos links do nac */
+/* estilização dos links do nav */
 a {
     margin-top: 20px;
     color: rgb(201, 197, 197);
     text-decoration: none;
     font-size: 20px;
     padding: 18px;
-    
 }
 
 li {
@@ -76,21 +56,6 @@ li {
     display: inline-block;
 }
 
-/* estilização do título */
-#tit-inicial {
-    text-align: center;
-    margin-top: 100px;
-    font-size: 60px;
-}
-
-/* estilização do subtítulo */
-#subt-inicial {
-    text-align: center;
-    margin-top: 50px;
-    font-size: 30px;
-}
-
-/* botao tela inicial */
 #but-inicial {
     text-align: center;
     background-color: blue;
@@ -105,15 +70,59 @@ li {
     font-weight: bold;
 }
 
-#caixa-input {
-    margin-top: 100px;
-    margin-left: 100px;
-    width: 700px;
-    height: 50px;
-    color: #fff;
-    padding: 10px;
-    font-weight: bold;
-    border: 2px solid #fff;
-    border-radius: 30px;
+.input-group {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 8px 16px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 300px;
+    gap: 8px;
+}
+
+.input-icon {
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+}
+
+.input-field {
+    flex: 1;
+    border: none;
     background-color: transparent;
+    font-size: 16px;
+    color: #333;
+}
+
+.input-field:focus {
+    outline: none;
+}
+
+.bloco-conteudo {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+    max-width: 800px;
+    margin: 100px 20px 5px 300px;
+}
+
+.bloco-conteudo h1 {
+    font-size: 48px;
+    color: #fff;
+}
+
+.bloco-conteudo p {
+    font-size: 26px;
+    color: #fff;
+}
+
+.highlight {
+    color: #fff;
+    background-color: rgb(10, 112, 245);
+    font-weight: bold;
 }
