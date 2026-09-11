@@ -217,3 +217,12 @@ searchInput.addEventListener("input", (event) => {
     console.log("-----------------------------------------");
 
 });
+
+// !BOTÕES DE NAVEGAÇÃO (CIMA/BAIXO)
+
+const btnSubir = document.getElementById("btn-cima");
+const btnDescer = document.getElementById("btn-baixo");
+
+const btnNav = document.addEventListener("click", (event) => {
+
+}
