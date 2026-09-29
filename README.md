@@ -4,4 +4,3 @@ Este é um projeto dedicado a realização do Trabalho de Conclusão de Curso (T
 
 # LICENÇA
 Todos os direitos do projeto são reservados e utilizados para fins educacionais.
-name: Jekyll site CI
