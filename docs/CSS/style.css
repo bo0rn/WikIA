@@ -126,74 +126,9 @@ li {
 
 /*  ---- ESTILIZAÇÃO DE ELEMENTOS GLOBAIS ----  */
 
-.input-group {
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-/*  ------------------------------------ ESTILIZAÇÃO DO ELEMENTOS GLOBAISO --------------------------------------------------------  */    border-radius: 24px;
-    width: 100%;
-    max-width: 300px;
-    gap: 8px;
-}
-
-
-.input-icon {
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    width: 24px;
-    height: 24px;
-}
-
-.input-field {
-    flex: 1;
-    border: none;
-    background-color: transparent;
-    font-size: 16px;
-    color: #333;
-}
-
-.input-field:focus {
-    outline: none;
-}
-
 /*  Destaque de Texto para Palavras Marcadas da Barra de Pesquisa */
 .highlight {
     color: #fff;
     background-color: rgb(10, 112, 245);
     font-weight: bold;
-}
-
-/*  Estilização dos Botões de Navegação da Barra de Pesquisa */
-.btn-Nav {
-    background-color: #0603b3;
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 10;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    padding: 5px 7px;       
-}
-
-/*  Estilização do Botão que sobe para cima   */
-#btn-cima {
-    background-color: #fff;
-}
-
-/*  Estilização do Botão que desce para baixo   */
-#btn-baixo {
-    background-color: #fff;
-#btn-cima {
-    background-color: #fff;
-}
-
-/*  Estilização do Botão que desce para baixo   */
-#btn-baixo {
-    background-color: #fff;
-}   
-   
 }

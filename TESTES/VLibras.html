@@ -5,33 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Testes</title>
     <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    
+// VLibras API
      <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-<script>
-  new window.VLibras.Widget({
-      rootPath: 'https://vlibras.gov.br/app',
-      personalization: 'https://vlibras.gov.br/config/default_logo.json',
-      avatar: 'random',
-      position: 'R',
-  });
-</script>
+    <script>
+    new window.VLibras.Widget({
+        rootPath: 'https://vlibras.gov.br/app',
+        personalization: 'https://vlibras.gov.br/config/default_logo.json',
+        avatar: 'random',
+        position: 'R',
+    });
+    </script>
+// Fim da VLibras API
 
     <header>
         <div class="menu-bar">
             <h1 class="logo-text">WikIA</h1>
-            <div id="container-input">
-                <div class="input-group">
-                    <div class="input-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-                    <input 
-                        id="search-input" 
-                        type="text" 
-                        class="input-field" 
-                        placeholder="Pesquisar"
-                    >
-                </div>
-            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Início</a></li>
@@ -72,17 +63,6 @@
         
         </div>   
     </main>            
-    
-    <div class="btn-Nav">
-        <button class="hiden" id="btn-cima">
-            <i class="fa-solid fa-arrow-up"></i>
-        </button>
-
-        <button class="hiden" id="btn-baixo">
-            <i class="fa-solid fa-arrow-down"></i>
-        </button>
-    </div>
-
     <script src="./JS/script.js"></script>
 </body>
 </html>
