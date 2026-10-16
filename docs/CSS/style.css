@@ -106,7 +106,7 @@ li {
 
 /*  ---- ESTILIZAÇÃO DO CONTEUDO.HTML ----  */
 
-.bloco-conteudo {
+.text-box {
     display: flex;
     flex-direction: column;
     padding: 20px 10px;
@@ -114,21 +114,22 @@ li {
     margin: 100px 20px 5px 300px;
 }
 
-.bloco-conteudo h1 {
+.text-box h1 {
     font-size: 48px;
     color: #fff;
 }
 
-.bloco-conteudo p {
+.text-box p {
     font-size: 26px;
     color: #fff;
 }
 
 /*  ---- ESTILIZAÇÃO DE ELEMENTOS GLOBAIS ----  */
 
+
+
 /*  Destaque de Texto para Palavras Marcadas da Barra de Pesquisa */
 .highlight {
-    color: #fff;
     background-color: rgb(10, 112, 245);
     font-weight: bold;
 }
