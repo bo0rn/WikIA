@@ -1,13 +1,6 @@
 /*  --------------------------------------------- IMPORTAÇÕES -------------------------------------------------------------------  */
 
-:root {
-    --almost-white: #fffdfa;
-    --dark-blue: #00001a;
-    --gunmetal: #5e607a;
-    --vermillion: #f15d51;
-    --yellow: #e9ab53;
-    --silver: #c5c6ce;
-}
+
 
 /*  ----------------------------------------- CONFIGURAÇÕES GERAIS -------------------------------------------------------------  */
 
@@ -18,6 +11,15 @@
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
     -webkit-font-smoothing: antialiased;
+}
+
+:root {
+    --almost-white: #fffdfa;
+    --dark-blue: #00001a;
+    --gunmetal: #5e607a;
+    --vermillion: #f15d51;
+    --yellow: #e9ab53;
+    --silver: #c5c6ce;
 }
 
 /*  Estilização do corpo do site    */
