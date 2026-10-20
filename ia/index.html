@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA em Foco — Notícias sobre Inteligência Artificial</title>
+<meta name="description" content="Portal de notícias sobre inteligência artificial: tecnologia, saúde, educação, negócios e ética.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="topbar"><div class="wrap"><span id="hoje"></span><span>Jornalismo sobre inteligência artificial</span></div></div>
+
+<header class="site">
+  <div class="wrap">
+    <a href="#/" class="logo" aria-label="IA em Foco, página inicial">IA <span>em</span> Foco</a>
+    <nav id="nav" aria-label="Principal">
+      <ul>
+        <li><a href="#/" data-r="">Início</a></li>
+        <li><a href="#/categoria/Tecnologia" data-r="Tecnologia">Tecnologia</a></li>
+        <li><a href="#/categoria/Saúde" data-r="Saúde">Saúde</a></li>
+        <li><a href="#/categoria/Educação" data-r="Educação">Educação</a></li>
+        <li><a href="#/categoria/Negócios" data-r="Negócios">Negócios</a></li>
+        <li><a href="#/categoria/Ética" data-r="Ética">Ética</a></li>
+        <li><a href="#/sobre" data-r="sobre">Sobre</a></li>
+      </ul>
+    </nav>
+    <a href="#/verificar" class="btn">✔ Verificar notícia</a>
+    <button class="menu-toggle" aria-label="Abrir menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main id="conteudo" class="wrap">
+  <!-- HOME -->
+  <section class="page" id="p-home">
+    <div class="hero-grid">
+      <a class="hero" id="hero"></a>
+      <aside class="novo" aria-label="Novidades">
+        <h2><span class="dot"></span> Novo</h2>
+        <ul id="novo-list"></ul>
+      </aside>
+    </div>
+    <div id="cats"></div>
+    <div id="verify-home"></div>
+  </section>
+
+  <!-- CATEGORIA -->
+  <section class="page" id="p-cat">
+    <div class="section-title"><h2 id="cat-title"></h2></div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="cat-grid"></div>
+  </section>
+
+  <!-- ARTIGO -->
+  <section class="page" id="p-art"><button class="back" onclick="history.back()">← Voltar</button><article class="article" id="art"></article></section>
+
+  <!-- VERIFICAR -->
+  <section class="page" id="p-ver"><div id="verify-page"></div></section>
+
+  <!-- SOBRE -->
+  <section class="page" id="p-sobre">
+    <div class="about">
+      <h1>Sobre o IA em Foco</h1>
+      <p>O IA em Foco é um portal dedicado a explicar, com clareza e responsabilidade, como a inteligência artificial está transformando a tecnologia, a saúde, a educação, os negócios e a sociedade.</p>
+      <p>Apostamos na acessibilidade: o portal conta com o widget VLibras, que traduz o conteúdo para a Língua Brasileira de Sinais, e com uma ferramenta de verificação que ajuda a identificar sinais de desinformação.</p>
+      <p>Contato: redacao@iaemfoco.com.br</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><div class="logo">IA <span style="color:var(--accent)">em</span> Foco</div><p>Notícias sobre inteligência artificial.</p></div>
+    <div>Acessível em Libras com VLibras · © 2026 IA em Foco</div>
+  </div>
+</footer>
+
+<!-- VLibras -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+
+<script src="script.js"></script>
+</body>
+</html>
