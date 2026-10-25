@@ -7,7 +7,7 @@
     --line: #e2ddd2;      /* Cor padrão para bordas e linhas divisórias */
     --accent: #d7261e;    /* Cor de destaque principal (Vermelho) */
     --accent2: #0f3d57;   /* Cor de destaque secundária (Azul escuro) */
-    --radius: 10px;       /* Raio padrão para cantos arredondados */
+    --radius: 10px;         /* Raio padrão para cantos arredondados */
 }
 
 /* Reset universal: remove margens, preenchimentos e define o box-sizing */

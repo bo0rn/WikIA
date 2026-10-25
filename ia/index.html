@@ -1,92 +1,137 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>IA em Foco — Notícias sobre Inteligência Artificial</title>
-<meta name="description" content="Portal de notícias sobre inteligência artificial: tecnologia, saúde, educação, negócios e ética.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IA em Foco — Notícias sobre Inteligência Artificial</title>
+  <!-- O meta tem como propósito definir a descrição da página para os mecanismos de busca (exibida abaixo do título no Google) -->
+  <meta name="description" content="Portal de notícias sobre inteligência artificial: tecnologia, saúde, educação, negócios e ética.">
+  <!-- O link rel tem como propósito conectar o estilo visual do site (arquivo CSS externo) -->
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <!-- Link de acessibilidade ("skip link"): fica oculto e permite que navegação por teclado (Tab) pule direto para o conteúdo principal -->
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-<div class="topbar"><div class="wrap"><span id="hoje"></span><span>Jornalismo sobre inteligência artificial</span></div></div>
-
-<header class="site">
-  <div class="wrap">
-    <a href="#/" class="logo" aria-label="IA em Foco, página inicial">IA <span>em</span> Foco</a>
-    <nav id="nav" aria-label="Principal">
-      <ul>
-        <li><a href="#/" data-r="">Início</a></li>
-        <li><a href="#/categoria/Tecnologia" data-r="Tecnologia">Tecnologia</a></li>
-        <li><a href="#/categoria/Saúde" data-r="Saúde">Saúde</a></li>
-        <li><a href="#/categoria/Educação" data-r="Educação">Educação</a></li>
-        <li><a href="#/categoria/Negócios" data-r="Negócios">Negócios</a></li>
-        <li><a href="#/categoria/Ética" data-r="Ética">Ética</a></li>
-        <li><a href="#/sobre" data-r="sobre">Sobre</a></li>
-      </ul>
-    </nav>
-    <a href="#/verificar" class="btn">✔ Verificar notícia</a>
-    <button class="menu-toggle" aria-label="Abrir menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
-  </div>
-</header>
-
-<main id="conteudo" class="wrap">
-  <!-- HOME -->
-  <section class="page" id="p-home">
-    <div class="hero-grid">
-      <a class="hero" id="hero"></a>
-      <aside class="novo" aria-label="Novidades">
-        <h2><span class="dot"></span> Novo</h2>
-        <ul id="novo-list"></ul>
-      </aside>
+  <!-- Barra superior no topo do site (exibe data e o slogan do portal) -->
+  <div class="topbar">
+    <div class="wrap">
+      <!-- Span reservado para o JavaScript preencher dinamicamente com a data atual -->
+      <span id="hoje"></span>
+      <!-- Frase do slogan do portal -->
+      <span>Jornalismo sobre inteligência artificial</span>
     </div>
-    <div id="cats"></div>
-    <div id="verify-home"></div>
-  </section>
-
-  <!-- CATEGORIA -->
-  <section class="page" id="p-cat">
-    <div class="section-title"><h2 id="cat-title"></h2></div>
-    <div class="filters" id="filters"></div>
-    <div class="grid" id="cat-grid"></div>
-  </section>
-
-  <!-- ARTIGO -->
-  <section class="page" id="p-art"><button class="back" onclick="history.back()">← Voltar</button><article class="article" id="art"></article></section>
-
-  <!-- VERIFICAR -->
-  <section class="page" id="p-ver"><div id="verify-page"></div></section>
-
-  <!-- SOBRE -->
-  <section class="page" id="p-sobre">
-    <div class="about">
-      <h1>Sobre o IA em Foco</h1>
-      <p>O IA em Foco é um portal dedicado a explicar, com clareza e responsabilidade, como a inteligência artificial está transformando a tecnologia, a saúde, a educação, os negócios e a sociedade.</p>
-      <p>Apostamos na acessibilidade: o portal conta com o widget VLibras, que traduz o conteúdo para a Língua Brasileira de Sinais, e com uma ferramenta de verificação que ajuda a identificar sinais de desinformação.</p>
-      <p>Contato: redacao@iaemfoco.com.br</p>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <div><div class="logo">IA <span style="color:var(--accent)">em</span> Foco</div><p>Notícias sobre inteligência artificial.</p></div>
-    <div>Acessível em Libras com VLibras · © 2026 IA em Foco</div>
   </div>
-</footer>
 
-<!-- VLibras -->
-<div vw class="enabled">
-  <div vw-access-button class="active"></div>
-  <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
-</div>
-<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <!-- Cabeçalho principal do site contendo logo, menu e botões -->
+  <header class="site">
+    <div class="wrap">
+      <!-- Logotipo do site com link para a página inicial e rótulo de acessibilidade (aria-label) -->
+      <a href="#/" class="logo" aria-label="IA em Foco, página inicial">IA <span>em</span> Foco</a>
+      
+      <!-- Menu de navegação principal da página -->
+      <nav id="nav" aria-label="Principal">
+        <ul>
+          <!-- Links para as diferentes seções/editorias de notícias do portal -->
+          <li><a href="#/" data-r="">Início</a></li>
+          <li><a href="#/categoria/Tecnologia" data-r="Tecnologia">Tecnologia</a></li>
+          <li><a href="#/categoria/Saúde" data-r="Saúde">Saúde</a></li>
+          <li><a href="#/categoria/Educação" data-r="Educação">Educação</a></li>
+          <li><a href="#/categoria/Negócios" data-r="Negócios">Negócios</a></li>
+          <li><a href="#/categoria/Ética" data-r="Ética">Ética</a></li>
+          <li><a href="#/sobre" data-r="sobre">Sobre</a></li>
+        </ul>
+      </nav>
 
+      <!-- Botão destacado que leva para a página da ferramenta de checagem de fatos -->
+      <a href="#/verificar" class="btn">✔ Verificar notícia</a>
 
-<script src="script.js"></script>
+      <!-- Botão "hambúrguer" para abrir/fechar o menu de navegação em telas pequenas (celulares) via JavaScript -->
+      <button class="menu-toggle" aria-label="Abrir menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+    </div>
+  </header>
+
+  <!-- Área principal de conteúdo do site, identificada pelo id="conteudo" recebido no link de salto -->
+  <main id="conteudo" class="wrap">
+    <!-- SEÇÃO: PÁGINA INICIAL (HOME) -->
+    <section class="page" id="p-home">
+      <div class="hero-grid">
+        <!-- Elemento âncora que o JavaScript usará para injetar o card da notícia principal em destaque -->
+        <a class="hero" id="hero"></a>
+
+        <!-- Barra lateral com a lista das últimas notícias publicadas -->
+        <aside class="novo" aria-label="Novidades">
+          <h2><span class="dot"></span> Novo</h2>
+          <!-- Lista não ordenada vazia que será preenchida via JavaScript com as novidades -->
+          <ul id="novo-list"></ul>
+        </aside>
+      </div>
+
+      <!-- Container onde o JavaScript vai carregar blocos de notícias por categorias na home -->
+      <div id="cats"></div>
+
+      <!-- Container para a ferramenta de verificação na versão compacta da home -->
+      <div id="verify-home"></div>
+    </section>
+
+    <!-- SEÇÃO: LISTAGEM DE NOTÍCIAS POR CATEGORIA -->
+    <section class="page" id="p-cat">
+      <!-- Título dinâmico da categoria selecionada -->
+      <div class="section-title"><h2 id="cat-title"></h2></div>
+      <!-- Botões ou opções de filtros da categoria -->
+      <div class="filters" id="filters"></div>
+      <!-- Grade contendo os cards de notícias daquela categoria específica -->
+      <div class="grid" id="cat-grid"></div>
+    </section>
+
+    <!-- SEÇÃO: LEITURA COMPLETA DE UM ARTIGO/MATÉRIA -->
+    <section class="page" id="p-art">
+      <!-- Botão para voltar à página anterior usando o histórico do navegador -->
+      <button class="back" onclick="history.back()">← Voltar</button>
+      <!-- Tag de artigo onde o texto e imagens da notícia completa serão inseridos via JavaScript -->
+      <article class="article" id="art"></article>
+    </section>
+
+    <!-- SEÇÃO: PÁGINA DEDICADA À FERRAMENTA DE VERIFICAÇÃO -->
+    <section class="page" id="p-ver">
+      <div id="verify-page"></div>
+    </section>
+
+    <!-- SEÇÃO: PÁGINA "SOBRE" -->
+    <section class="page" id="p-sobre">
+      <div class="about">
+        <h1>Sobre o IA em Foco</h1>
+        <p>O IA em Foco é um portal dedicado a explicar, com clareza e responsabilidade, como a inteligência artificial está transformando a tecnologia, a saúde, a educação, os negócios e a sociedade.</p>
+        <p>Apostamos na acessibilidade: o portal conta com o widget VLibras, que traduz o conteúdo para a Língua Brasileira de Sinais, e com uma ferramenta de verificação que ajuda a identificar sinais de desinformação.</p>
+        <p>Contato: redacao@iaemfoco.com.br</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé do site -->
+  <footer>
+    <div class="wrap">
+      <!-- Bloco com a logo e resumo no rodapé -->
+      <div>
+        <div class="logo">IA <span style="color:var(--accent)">em</span> Foco</div>
+        <p>Notícias sobre inteligência artificial.</p>
+      </div>
+      <!-- Informações sobre acessibilidade e direitos autorais -->
+      <div>Acessível em Libras com VLibras · © 2026 IA em Foco</div>
+    </div>
+  </footer>
+
+  <!-- Estrutura do elemento flutuante do widget VLibras (Língua Brasileira de Sinais) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div>
+  </div>
+
+  <!-- Script oficial do Governo Federal para carregar e ativar o avatar tradutor de Libras -->
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+  <!-- Script de JavaScript do site, responsável por controlar as páginas, notícias e dinamismo do portal -->
+  <script src="script.js"></script>
 </body>
 </html>
