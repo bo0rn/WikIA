@@ -1,87 +1,498 @@
-:root{--bg:#f7f5f0;--fg:#141414;--muted:#5d5d5d;--card:#fff;--line:#e2ddd2;--accent:#d7261e;--accent2:#0f3d57;--radius:10px}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Source Sans 3",system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.55}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15}
-.skip{position:absolute;left:-999px}.skip:focus{left:10px;top:10px;background:#fff;padding:8px;z-index:99}
-/* top bar */
-.topbar{background:var(--fg);color:#eee;font-size:.85rem}
-.topbar .wrap{display:flex;justify-content:space-between;padding:6px 20px}
-header.site{background:var(--card);border-bottom:3px solid var(--fg);position:sticky;top:0;z-index:50}
-header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 20px}
-.logo{font-family:Fraunces,serif;font-weight:800;font-size:1.8rem;letter-spacing:-.5px}
-.logo span{color:var(--accent)}
-nav ul{display:flex;gap:4px;list-style:none;flex-wrap:wrap}
-nav a{padding:8px 12px;border-radius:6px;font-weight:600;font-size:.95rem}
-nav a:hover,nav a.active{background:var(--fg);color:#fff}
-.btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;border:0;padding:10px 16px;border-radius:6px;font-weight:700;cursor:pointer;font-size:.95rem}
-.btn:hover{filter:brightness(.92)}
-.menu-toggle{display:none;background:none;border:2px solid var(--fg);border-radius:6px;padding:6px 10px;font-size:1.1rem;cursor:pointer}
-/* layout */
-main{padding:28px 0 60px}
-.page{display:none}.page.active{display:block}
-.hero-grid{display:grid;grid-template-columns:2fr 1fr;gap:24px}
-.hero{position:relative;border-radius:var(--radius);overflow:hidden;min-height:440px;color:#fff;display:flex;align-items:flex-end}
-.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(0,0,0,.85))}
-.hero .txt{position:relative;z-index:1;padding:28px}
-.hero h1{font-size:2.3rem;margin:10px 0}
-.tag{display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:4px}
-.tag.blue{background:var(--accent2)}
-aside.novo{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
-aside.novo h2{font-size:1.3rem;display:flex;align-items:center;gap:8px;border-bottom:2px solid var(--fg);padding-bottom:8px;margin-bottom:8px}
-.dot{width:10px;height:10px;border-radius:50%;background:var(--accent);animation:p 1.4s infinite}
-@keyframes p{50%{opacity:.3}}
-.novo li{list-style:none;padding:12px 0;border-bottom:1px solid var(--line)}
-.novo li:last-child{border:0}
-.novo time{font-size:.8rem;color:var(--accent);font-weight:700}
-.novo a{display:block;font-weight:600}
-.novo a:hover{text-decoration:underline}
-.section-title{display:flex;justify-content:space-between;align-items:baseline;margin:44px 0 16px;border-bottom:2px solid var(--fg);padding-bottom:6px}
-.section-title h2{font-size:1.6rem}
-.section-title a{color:var(--accent);font-weight:700;font-size:.9rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:stretch;gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;cursor:pointer}
-.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
-.card img{aspect-ratio:16/10;object-fit:cover}
-.card .body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
-.card .tag{align-self:flex-start}
-.card h3{font-size:1.15rem}
-.card p{color:var(--muted);font-size:.95rem}
-.card .meta{margin-top:auto;font-size:.8rem;color:var(--muted)}
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.chip{border:1.5px solid var(--fg);background:none;border-radius:99px;padding:6px 14px;font-weight:600;cursor:pointer}
-.chip.active{background:var(--fg);color:#fff}
-/* verificador */
-.verify{background:var(--accent2);color:#fff;border-radius:var(--radius);padding:32px;display:grid;grid-template-columns:1fr 1.3fr;gap:28px;margin-top:44px}
-.verify h2{font-size:1.9rem;margin-bottom:10px}
-.verify textarea,.verify input{width:100%;border:0;border-radius:6px;padding:12px;font:inherit;margin-bottom:10px}
-.verify textarea{min-height:120px;resize:vertical}
-.result{margin-top:12px;padding:16px;border-radius:6px;background:#fff;color:var(--fg);display:none}
-.result.show{display:block}
-.meter{height:10px;background:#eee;border-radius:99px;overflow:hidden;margin:8px 0}
-.meter i{display:block;height:100%}
-.result ul{padding-left:18px;font-size:.92rem}
-/* article */
-.article{max-width:760px;margin:0 auto;background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
-.article img{width:100%;aspect-ratio:16/8;object-fit:cover}
-.article .body{padding:28px}
-.article h1{font-size:2.2rem;margin:10px 0}
-.article p{margin-bottom:14px;font-size:1.08rem}
-.back{display:inline-block;margin-bottom:16px;font-weight:700;color:var(--accent);cursor:pointer;background:none;border:0;font-size:1rem}
-.about{max-width:760px;background:var(--card);padding:32px;border-radius:var(--radius);border:1px solid var(--line)}
-.about h1{font-size:2.2rem;margin-bottom:14px}.about p{margin-bottom:12px}
-footer{background:var(--fg);color:#ccc;padding:36px 0;font-size:.92rem}
-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
-footer .logo{color:#fff;font-size:1.4rem}
-@media(max-width:900px){
- .hero-grid,.verify{grid-template-columns:1fr}
- .menu-toggle{display:block}
- nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--card);border-bottom:3px solid var(--fg);padding:10px 20px}
- nav.open{display:block}
- nav ul{flex-direction:column}
- header.site .btn{display:none}
- .hero h1{font-size:1.7rem}.hero{min-height:360px}
+
+:root {
+    --bg: #f7f5f0;        /* Cor de fundo geral da página */
+    --fg: #141414;        /* Cor principal para textos e elementos escuros */
+    --muted: #5d5d5d;     /* Cor secundária/cinza para textos menos importantes */
+    --card: #fff;         /* Cor de fundo para cartões e blocos */
+    --line: #e2ddd2;      /* Cor padrão para bordas e linhas divisórias */
+    --accent: #d7261e;    /* Cor de destaque principal (Vermelho) */
+    --accent2: #0f3d57;   /* Cor de destaque secundária (Azul escuro) */
+    --radius: 10px;       /* Raio padrão para cantos arredondados */
 }
+
+/* Reset universal: remove margens, preenchimentos e define o box-sizing */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Source Sans 3", system-ui, sans-serif;
+    background-color: var(--bg);
+    color: var(--fg);
+    line-height: 1.55;
+}
+/* Estilização básica de links e imagens */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
+ /* Classe utilitária para centralizar e limitar a largura do conteúdo */
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* Tipografia de títulos */
+ h1, h2, h3 {
+    font-family: Fraunces, Georgia, serif;
+    line-height: 1.15;
+}
+/* Link de acessibilidade para pular para o conteúdo (aparece ao focar via teclado) */
+skip {
+    position: absolute;
+    left: -999px;
+}
+.skip:focus {
+    left: 10px;
+    top: 10px;
+    background: #fff;
+    padding: 8px;
+    z-index: 99;
+}
+
+/* 2. COMPONENTES DO TOPO (BARRA SUPERIOR E CABEÇALHO) */
+
+/* Barra superior utilitária */
+.topbar {
+    background-color: var(--fg);
+    color: #eee;
+    font-size: .85rem;
+}
+.topbar .wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 20px;
+}
+/* Cabeçalho principal fixo no topo */
+header.site {
+    background-color: var(--card);
+    border-bottom: 3px solid var(--fg);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+header.site .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 20px;
+}
+/* Logotipo do site */
+.logo {
+    font-family: Fraunces, serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: -.5px;
+}
+.logo span {
+    color: var(--accent);
+}
+/* Navegação principal */
+nav ul {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    flex-wrap: wrap;
+}
+nav a {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: .95rem;
+}
+nav a:hover,
+nav a.active {
+    background-color: var(--fg);
+    color: #fff;
+}
+/* Botão padrão */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: var(--accent);
+    color: #fff;
+    border: 0;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: .95rem;
+}
+.btn:hover {
+    filter: brightness(.92);
+}
+/* Botão de menu responsivo (hambúrguer) oculto por padrão em telas grandes */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 2px solid var(--fg);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* 3. LAYOUT PRINCIPAL E SEÇÃO DE DESTAQUE (HERO) */
+main {
+    padding: 28px 0 60px;
+}
+/* Sistema de abas/páginas */
+.page {
+    display: none;
+}
+.page.active {
+    display: block;
+}
+ /* Grid principal da página inicial */
+.hero-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+}
+/* Bloco Hero (Banner principal) */
+.hero {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    min-height: 440px;
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+}
+.hero img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Gradiente escuro sobre a imagem para destacar o texto */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent 30%, rgba(0, 0, 0, .85));
+}
+.hero .txt {
+    position: relative;
+    z-index: 1;
+    padding: 28px;
+}
+.hero h1 {
+    font-size: 2.3rem;
+    margin: 10px 0;
+}
+/* Tags e rótulos */
+.tag {
+    display: inline-block;
+    background-color: var(--accent);
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+.tag.blue {
+     background-color: var(--accent2);
+}
+/* Barra lateral de novidades */
+aside.novo {
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+aside.novo h2 {
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 2px solid var(--fg);
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+/* Indicador animado (ponto pulsante) */
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    animation: pulse-dot 1.4s infinite;
+}
+@keyframes pulse-dot {
+    50% { opacity: .3; }
+}
+.novo li {
+    list-style: none;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+}
+.novo li:last-child {
+    border: 0;
+}
+.novo time {
+    font-size: .8rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+.novo a {
+    display: block;
+    font-weight: 600;
+}
+.novo a:hover {
+    text-decoration: underline;
+}
+/* 4. SEÇÕES, GRIDS DE CARDS E FILTROS */
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 44px 0 16px;
+    border-bottom: 2px solid var(--fg);
+    padding-bottom: 6px;
+}
+.section-title h2 {
+    font-size: 1.6rem;
+}
+.section-title a {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: .9rem;
+}
+/* Grid flexível para os cartões */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    align-items: stretch;
+    gap: 20px;
+}
+/* Estilo individual dos cartões */
+.card {
+    background-color: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s, box-shadow .2s;
+    cursor: pointer;
+}
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, .08);
+}
+.card img {
+    aspect-ratio: 16/10;
+    object-fit: cover;
+}
+.card .body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+.card .tag {
+    align-self: flex-start;
+}
+.card h3 {
+    font-size: 1.15rem;
+}
+.card p {
+    color: var(--muted);
+    font-size: .95rem;
+}
+.card .meta {
+    margin-top: auto;
+    font-size: .8rem;
+    color: var(--muted);
+}
+/* Filtros por chips/botões */
+.filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.chip {
+    border: 1.5px solid var(--fg);
+    background: none;
+    border-radius: 99px;
+    padding: 6px 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.chip.active {
+    background-color: var(--fg);
+    color: #fff;
+}
+
+/*  5. MÓDULO VERIFICADOR E PÁGINAS DE CONTEÚDO (ARTIGOS E SOBRE) */
+
+/* Bloco interativo do Verificador */
+.verify {
+    background-color: var(--accent2);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 28px;
+    margin-top: 44px;
+}
+.verify h2 {
+    font-size: 1.9rem;
+    margin-bottom: 10px;
+}
+.verify textarea,
+.verify input {
+    width: 100%;
+    border: 0;
+    border-radius: 6px;
+    padding: 12px;
+    font: inherit;
+    margin-bottom: 10px;
+}
+.verify textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.result {
+    margin-top: 12px;
+    padding: 16px;
+    border-radius: 6px;
+    background-color: #fff;
+    color: var(--fg);
+    display: none;
+}
+.result.show {
+    display: block;
+}
+.meter {
+    height: 10px;
+    background-color: #eee;
+    border-radius: 99px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+.meter i {
+    display: block;
+    height: 100%;
+}
+.result ul {
+    padding-left: 18px;
+    font-size: .92rem;
+}
+/* Página de Artigo individual */
+.article {
+    max-width: 760px;
+    margin: 0 auto;
+    background-color: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--line);
+}
+.article img {
+    width: 100%;
+    aspect-ratio: 16/8;
+    object-fit: cover;
+}
+.article .body {
+    padding: 28px;
+}
+.article h1 {
+    font-size: 2.2rem;
+    margin: 10px 0;
+}
+.article p {
+    margin-bottom: 14px;
+    font-size: 1.08rem;
+}
+.back {
+    display: inline-block;
+    margin-bottom: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    cursor: pointer;
+    background: none;
+    border: 0;
+    font-size: 1rem;
+}
+/* Página "Sobre" */
+.about {
+    max-width: 760px;
+    background-color: var(--card);
+    padding: 32px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+}
+.about h1 {
+    font-size: 2.2rem;
+    margin-bottom: 14px;
+}
+.about p {
+    margin-bottom: 12px;
+}
+/* 6. RODAPÉ (FOOTER) */
+footer {
+    background-color: var(--fg);
+    color: #ccc;
+    padding: 36px 0;
+    font-size: .92rem;
+}
+footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+footer .logo {
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+/* 7. MEDIA QUERIES (RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS) */
+@media (max-width: 900px) {
+.hero-grid,
+.verify {
+    grid-template-columns: 1fr;
+}
+.menu-toggle {
+    display: block;
+}
+nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--card);
+    border-bottom: 3px solid var(--fg);
+    padding: 10px 20px;
+}
+nav.open {
+    display: block;
+}
+nav ul {
+    flex-direction: column;
+}
+header.site .btn {
+    display: none;
+}
+.hero h1 {
+    font-size: 1.7rem;
+}
+.hero {
+    min-height: 360px;
+}
+}
+  
