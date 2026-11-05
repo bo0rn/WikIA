@@ -1,7 +1,4 @@
-
-// ==========================================
 // 1. CONFIGURAÇÕES E DADOS DAS NOTÍCIAS
-// ==========================================
 
 // Função para gerar os links das imagens
 const img = id =>
@@ -132,9 +129,7 @@ const CATS = [
 const $ = seletor => document.querySelector(seletor);
 
 
-// ==========================================
 // 2. CRIAÇÃO DOS CARDS DE NOTÍCIAS
-// ==========================================
 
 const card = n => `
   <a class="card" href="#/noticia/${n.id}">
@@ -154,9 +149,7 @@ const card = n => `
 `;
 
 
-// ==========================================
 // 3. PÁGINA INICIAL
-// ==========================================
 
 function renderHome() {
   const h = NEWS[0];
@@ -199,10 +192,7 @@ function renderHome() {
   }
 }
 
-
-// ==========================================
 // 4. PÁGINA DE CATEGORIAS
-// ==========================================
 
 function renderCat(c) {
   const titulo = $("#cat-title");
@@ -235,10 +225,7 @@ function renderCat(c) {
   }
 }
 
-
-// ==========================================
 // 5. PÁGINA DE LEITURA DA NOTÍCIA
-// ==========================================
 
 function renderArt(id) {
   const n = NEWS.find(x => x.id == id);
@@ -289,10 +276,7 @@ function renderArt(id) {
   `;
 }
 
-
-// ==========================================
 // 6. FERRAMENTA DE VERIFICAÇÃO
-// ==========================================
 
 const verifyHTML = `
   <div class="verify">
@@ -373,9 +357,8 @@ window.verificar = function(event, formulario) {
 };
 
 
-// ==========================================
+
 // 7. NAVEGAÇÃO ENTRE AS PÁGINAS
-// ==========================================
 
 function route() {
   // Lê o endereço da página
@@ -441,9 +424,8 @@ function route() {
 }
 
 
-// ==========================================
+
 // 8. DATA ATUAL
-// ==========================================
 
 const hoje = $("#hoje");
 
@@ -457,9 +439,7 @@ if (hoje) {
 }
 
 
-// ==========================================
 // 9. INICIALIZAÇÃO DO SITE
-// ==========================================
 
 // Carrega as notícias da página inicial
 renderHome();
@@ -485,9 +465,8 @@ window.addEventListener("hashchange", route);
 route();
 
 
-// ==========================================
+
 // 10. INICIALIZAÇÃO DO VLIBRAS
-// ==========================================
 
 window.addEventListener("load", function() {
   if (window.VLibras && window.VLibras.Widget) {
