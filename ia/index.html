@@ -14,15 +14,7 @@
   <!-- Link de acessibilidade ("skip link"): fica oculto e permite que navegação por teclado (Tab) pule direto para o conteúdo principal -->
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- Barra superior no topo do site (exibe data e o slogan do portal) -->
-  <div class="topbar">
-    <div class="wrap">
-      <!-- Span reservado para o JavaScript preencher dinamicamente com a data atual -->
-      <span id="hoje"></span>
-      <!-- Frase do slogan do portal -->
-      <span>Jornalismo sobre inteligência artificial</span>
-    </div>
-  </div>
+
 
   <!-- Cabeçalho principal do site contendo logo, menu e botões -->
   <header class="site">
@@ -38,14 +30,9 @@
           <li><a href="#/categoria/Tecnologia" data-r="Tecnologia">Tecnologia</a></li>
           <li><a href="#/categoria/Saúde" data-r="Saúde">Saúde</a></li>
           <li><a href="#/categoria/Educação" data-r="Educação">Educação</a></li>
-          <li><a href="#/categoria/Negócios" data-r="Negócios">Negócios</a></li>
           <li><a href="#/categoria/Ética" data-r="Ética">Ética</a></li>
-          <li><a href="#/sobre" data-r="sobre">Sobre</a></li>
         </ul>
       </nav>
-
-      <!-- Botão destacado que leva para a página da ferramenta de checagem de fatos -->
-      <a href="#/verificar" class="btn">✔ Verificar notícia</a>
 
       <!-- Botão "hambúrguer" para abrir/fechar o menu de navegação em telas pequenas (celulares) via JavaScript -->
       <button class="menu-toggle" aria-label="Abrir menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
@@ -60,19 +47,10 @@
         <!-- Elemento âncora que o JavaScript usará para injetar o card da notícia principal em destaque -->
         <a class="hero" id="hero"></a>
 
-        <!-- Barra lateral com a lista das últimas notícias publicadas -->
-        <aside class="novo" aria-label="Novidades">
-          <h2><span class="dot"></span> Novo</h2>
-          <!-- Lista não ordenada vazia que será preenchida via JavaScript com as novidades -->
-          <ul id="novo-list"></ul>
-        </aside>
       </div>
 
       <!-- Container onde o JavaScript vai carregar blocos de notícias por categorias na home -->
       <div id="cats"></div>
-
-      <!-- Container para a ferramenta de verificação na versão compacta da home -->
-      <div id="verify-home"></div>
     </section>
 
     <!-- SEÇÃO: LISTAGEM DE NOTÍCIAS POR CATEGORIA -->

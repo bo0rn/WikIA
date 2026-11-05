@@ -43,7 +43,7 @@ img {
     line-height: 1.15;
 }
 /* Link de acessibilidade para pular para o conteúdo (aparece ao focar via teclado) */
-skip {
+.skip {
     position: absolute;
     left: -999px;
 }
@@ -85,18 +85,24 @@ header.site .wrap {
 }
 /* Logotipo do site */
 .logo {
+    display: inline-block;
     font-family: Fraunces, serif;
     font-weight: 800;
     font-size: 1.8rem;
     letter-spacing: -.5px;
+    color: inherit;
+    white-space: nowrap;
 }
+
+/* O span é apenas decorativo; não é necessário para exibir o texto da logo. */
 .logo span {
+    display: inline;
     color: var(--accent);
 }
 /* Navegação principal */
 nav ul {
     display: flex;
-    gap: 4px;
+    gap: 8px;
     list-style: none;
     flex-wrap: wrap;
 }
