@@ -1,13 +1,10 @@
 // 1. CONFIGURAÇÕES E DADOS DAS NOTÍCIAS
 
-// Função para gerar os links das imagens
 const img = id =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=70`;
 
-// Lista global que será preenchida via arquivos JSON
 let NEWS = [];
 
-// Categorias disponíveis
 const CATS = [
   "Tecnologia",
   "Saúde",
@@ -16,10 +13,8 @@ const CATS = [
   "Ética"
 ];
 
-// Atalho para selecionar elementos HTML
 const $ = seletor => document.querySelector(seletor);
 
-// Função auxiliar para ler e converter os arquivos JSON das notícias
 async function carregarNoticias() {
   const totalNoticias = 12;
   const noticiasCarregadas = [];
@@ -46,71 +41,51 @@ async function carregarNoticias() {
   }
 
   NEWS = noticiasCarregadas;
-  
-  // Inicializa o site após carregar os dados
   inicializarSite();
 }
-
 
 // 2. CRIAÇÃO DOS CARDS DE NOTÍCIAS
 
 const card = n => `
   <a class="card" href="#/noticia/${n.id}">
     <img src="${n.img}" alt="${n.t}" loading="lazy">
-
     <div class="body">
-      <span class="tag ${n.cat === "Ética" ? "blue" : ""}">
-        ${n.cat}
-      </span>
-
+      <span class="tag ${n.cat === "Ética" ? "blue" : ""}">${n.cat}</span>
       <h3>${n.t}</h3>
       <p>${n.r}</p>
-
       <span class="meta">${n.d} · ${n.h}</span>
     </div>
   </a>
 `;
 
-
 // 3. PÁGINA INICIAL
 
 function renderHome() {
   if (NEWS.length === 0) return;
-  const h = NEWS[0];
-
-  // Notícia principal
+  const destaque = NEWS[0];
   const hero = $("#hero");
 
   if (hero) {
-    hero.href = `#/noticia/${h.id}`;
-
+    hero.href = `#/noticia/${destaque.id}`;
     hero.innerHTML = `
-      <img src="${h.img}" alt="${h.t}">
-
+      <img src="${destaque.img}" alt="${destaque.t}">
       <div class="txt">
-        <span class="tag">Destaque · ${h.cat}</span>
-        <h1>${h.t}</h1>
-        <p>${h.r}</p>
+        <span class="tag">Destaque · ${destaque.cat}</span>
+        <h1>${destaque.t}</h1>
+        <p>${destaque.r}</p>
       </div>
     `;
   }
 
-  // Blocos de notícias por categoria
   const cats = $("#cats");
-
   if (cats) {
     cats.innerHTML = CATS.map(c => `
       <div class="section-title">
         <h2>${c}</h2>
         <a href="#/categoria/${encodeURIComponent(c)}">Ver tudo →</a>
       </div>
-
       <div class="grid">
-        ${NEWS
-          .filter(n => n.cat === c)
-          .slice(0, 3)
-          .map(card)
-          .join("")}
+        ${NEWS.filter(n => n.cat === c).slice(0, 3).map(card).join("")}
       </div>
     `).join("");
   }
@@ -123,22 +98,12 @@ function renderCat(c) {
   const filtros = $("#filters");
   const grade = $("#cat-grid");
 
-  if (titulo) {
-    titulo.textContent =
-      c === "Todas" ? "Todas as notícias" : c;
-  }
+  if (titulo) titulo.textContent = c === "Todas" ? "Todas as notícias" : c;
 
   if (filtros) {
-    filtros.innerHTML = ["Todas", ...CATS]
-      .map(x => `
-        <a
-          class="chip ${x === c ? "active" : ""}"
-          href="#/categoria/${encodeURIComponent(x)}"
-        >
-          ${x}
-        </a>
-      `)
-      .join("");
+    filtros.innerHTML = ["Todas", ...CATS].map(x => `
+      <a class="chip ${x === c ? "active" : ""}" href="#/categoria/${encodeURIComponent(x)}">${x}</a>
+    `).join("");
   }
 
   if (grade) {
@@ -154,7 +119,6 @@ function renderCat(c) {
 function renderArt(id) {
   const n = NEWS.find(x => x.id == id);
   const artigo = $("#art");
-
   if (!artigo) return;
 
   if (!n) {
@@ -163,107 +127,19 @@ function renderArt(id) {
   }
 
   document.title = `${n.t} — IA em Foco`;
-
   artigo.innerHTML = `
     <img src="${n.img}" alt="${n.t}">
-
     <div class="body">
       <span class="tag">${n.cat}</span>
-
       <h1>${n.t}</h1>
-
-      <p class="meta" style="color:var(--muted)">
-        Por Redação IA em Foco · ${n.d}, ${n.h}
-      </p>
-
+      <p class="meta" style="color:var(--muted)">Por Redação IA em Foco · ${n.d}, ${n.h}</p>
       <p><strong>${n.r}</strong></p>
-
       ${n.conteudoHtml}
     </div>
   `;
 }
 
-// 6. FERRAMENTA DE VERIFICAÇÃO
-
-const verifyHTML = `
-  <div class="verify">
-    <h2>Verificador de informações</h2>
-
-    <p>
-      Insira um link para analisar alguns sinais básicos
-      de segurança e confiabilidade da fonte.
-    </p>
-
-    <form onsubmit="verificar(event, this)">
-      <label for="url-verificacao">Link da notícia:</label>
-
-      <input
-        type="url"
-        name="url"
-        id="url-verificacao"
-        placeholder="https://exemplo.com/noticia"
-        required
-      >
-
-      <button type="submit">Verificar link</button>
-
-      <div id="verify-result" aria-live="polite"></div>
-    </form>
-
-    <p class="meta">
-      Atenção: esta ferramenta não confirma se uma notícia
-      é verdadeira. Sempre consulte outras fontes.
-    </p>
-  </div>
-`;
-
-window.verificar = function(event, formulario) {
-  event.preventDefault();
-
-  const campo = formulario.querySelector('[name="url"]');
-  const resultado = formulario.querySelector("#verify-result");
-
-  if (!campo || !resultado) return;
-
-  try {
-    const endereco = new URL(campo.value);
-    const protocoloSeguro = endereco.protocol === "https:";
-    const dominio = endereco.hostname;
-
-    resultado.innerHTML = "";
-
-    const titulo = document.createElement("h3");
-    titulo.textContent = "Resultado da análise";
-    resultado.appendChild(titulo);
-
-    const mensagem = document.createElement("p");
-
-    if (protocoloSeguro) {
-      mensagem.textContent =
-        "O endereço utiliza HTTPS, que protege a conexão entre o navegador e o site.";
-    } else {
-      mensagem.textContent =
-        "Atenção: o endereço não utiliza HTTPS. Evite fornecer dados pessoais nesse site.";
-    }
-
-    resultado.appendChild(mensagem);
-
-    const fonte = document.createElement("p");
-    fonte.textContent = `Domínio analisado: ${dominio}`;
-    resultado.appendChild(fonte);
-
-    const aviso = document.createElement("p");
-    aviso.textContent =
-      "O uso de HTTPS não garante que o conteúdo seja verdadeiro. Confira a autoria, a data e outras fontes.";
-    resultado.appendChild(aviso);
-
-  } catch {
-    resultado.textContent = "Insira um endereço válido.";
-  }
-};
-
-
-// 7. NAVEGAÇÃO ENTRE AS PÁGINAS
+// 6. NAVEGAÇÃO ENTRE AS PÁGINAS
 
 function route() {
   const caminho = decodeURIComponent(location.hash.replace(/^#\/?/, ""));
@@ -274,7 +150,7 @@ function route() {
     const categoriaAtual = p[0] === "categoria" ? p[1] : "";
     link.classList.toggle("active",
       (rota === categoriaAtual && p[0] === "categoria") ||
-      (rota === "" && !["categoria", "noticia", "verificar", "sobre"].includes(p[0]))
+      (rota === "" && !["categoria", "noticia", "sobre"].includes(p[0]))
     );
   });
 
@@ -288,8 +164,6 @@ function route() {
   } else if (p[0] === "noticia") {
     renderArt(p[1]);
     page = $("#p-art");
-  } else if (p[0] === "verificar") {
-    page = $("#p-ver");
   } else if (p[0] === "sobre") {
     page = $("#p-sobre");
   } else {
@@ -306,11 +180,9 @@ function route() {
   }
 }
 
-
-// 8. DATA ATUAL
+// 7. DATA ATUAL
 
 const hoje = $("#hoje");
-
 if (hoje) {
   hoje.textContent = new Date().toLocaleDateString("pt-BR", {
     weekday: "long",
@@ -320,27 +192,17 @@ if (hoje) {
   });
 }
 
-
-// 9. INICIALIZAÇÃO DO SITE
+// 8. INICIALIZAÇÃO DO SITE
 
 function inicializarSite() {
   renderHome();
-
-  const verifyHome = $("#verify-home");
-  if (verifyHome) verifyHome.innerHTML = verifyHTML;
-
-  const verifyPage = $("#verify-page");
-  if (verifyPage) verifyPage.innerHTML = verifyHTML;
-
   window.addEventListener("hashchange", route);
   route();
 }
 
-// Inicia o processo buscando os arquivos JSON
 carregarNoticias();
 
-
-// 10. INICIALIZAÇÃO DO VLIBRAS
+// 9. INICIALIZAÇÃO DO VLIBRAS
 
 window.addEventListener("load", function() {
   if (window.VLibras && window.VLibras.Widget) {
