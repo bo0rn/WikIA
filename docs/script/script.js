@@ -4,7 +4,7 @@
 const img = id =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=70`;
 
-// Lista global que será preenchida via arquivos Markdown
+// Lista global que será preenchida via arquivos JSON
 let NEWS = [];
 
 // Categorias disponíveis
@@ -19,47 +19,27 @@ const CATS = [
 // Atalho para selecionar elementos HTML
 const $ = seletor => document.querySelector(seletor);
 
-// Função auxiliar para ler e converter os arquivos Markdown das notícias
+// Função auxiliar para ler e converter os arquivos JSON das notícias
 async function carregarNoticias() {
   const totalNoticias = 12;
   const noticiasCarregadas = [];
 
   for (let i = 1; i <= totalNoticias; i++) {
     try {
-      const resposta = await fetch(`noticias/noticia-${i}.md`);
+      const resposta = await fetch(`noticias/noticia-${i}.json`);
       if (!resposta.ok) continue;
-      const texto = await resposta.text();
+      const dados = await resposta.json();
 
-      // Parser simples para Frontmatter (YAML básico) e Conteúdo
-      const partes = texto.split("---");
-      if (partes.length >= 3) {
-        const cabecalho = partes[1];
-        const corpo = partes.slice(2).join("---").trim();
-
-        const extrairCampo = (campo) => {
-          const match = cabecalho.match(new RegExp(`${campo}:\\s*"(.*?)"`)) || cabecalho.match(new RegExp(`${campo}:\\s*(.*)`));
-          return match ? match[1].trim().replace(/^["']|["']$/g, '') : "";
-        };
-
-        const id = parseInt(extrairCampo("id")) || i;
-        const cat = extrairCampo("cat");
-        const t = extrairCampo("t");
-        const r = extrairCampo("r");
-        const imgId = extrairCampo("img");
-        const d = extrairCampo("d");
-        const h = extrairCampo("h");
-
-        noticiasCarregadas.push({
-          id,
-          cat,
-          t,
-          r,
-          img: img(imgId),
-          d,
-          h,
-          conteudoHtml: corpo.split("\n\n").map(paragrafo => `<p>${paragrafo.trim()}</p>`).join("")
-        });
-      }
+      noticiasCarregadas.push({
+        id: dados.id || i,
+        cat: dados.cat,
+        t: dados.t,
+        r: dados.r,
+        img: img(dados.imgId),
+        d: dados.d,
+        h: dados.h,
+        conteudoHtml: dados.paragrafos ? dados.paragrafos.map(paragrafo => `<p>${paragrafo}</p>`).join("") : ""
+      });
     } catch (erro) {
       console.error(`Erro ao carregar a notícia ${i}:`, erro);
     }
@@ -356,7 +336,7 @@ function inicializarSite() {
   route();
 }
 
-// Inicia o processo buscando os arquivos Markdown
+// Inicia o processo buscando os arquivos JSON
 carregarNoticias();
 
 
