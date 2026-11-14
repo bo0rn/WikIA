@@ -4,7 +4,8 @@
 const img = id =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=70`;
 
-
+// Lista global que será preenchida via arquivos Markdown
+let NEWS = [];
 
 // Categorias disponíveis
 const CATS = [
@@ -17,6 +18,58 @@ const CATS = [
 
 // Atalho para selecionar elementos HTML
 const $ = seletor => document.querySelector(seletor);
+
+// Função auxiliar para ler e converter os arquivos Markdown das notícias
+async function carregarNoticias() {
+  const totalNoticias = 12;
+  const noticiasCarregadas = [];
+
+  for (let i = 1; i <= totalNoticias; i++) {
+    try {
+      const resposta = await fetch(`noticias/noticia-${i}.md`);
+      if (!resposta.ok) continue;
+      const texto = await resposta.text();
+
+      // Parser simples para Frontmatter (YAML básico) e Conteúdo
+      const partes = texto.split("---");
+      if (partes.length >= 3) {
+        const cabecalho = partes[1];
+        const corpo = partes.slice(2).join("---").trim();
+
+        const extrairCampo = (campo) => {
+          const match = cabecalho.match(new RegExp(`${campo}:\\s*"(.*?)"`)) || cabecalho.match(new RegExp(`${campo}:\\s*(.*)`));
+          return match ? match[1].trim().replace(/^["']|["']$/g, '') : "";
+        };
+
+        const id = parseInt(extrairCampo("id")) || i;
+        const cat = extrairCampo("cat");
+        const t = extrairCampo("t");
+        const r = extrairCampo("r");
+        const imgId = extrairCampo("img");
+        const d = extrairCampo("d");
+        const h = extrairCampo("h");
+
+        noticiasCarregadas.push({
+          id,
+          cat,
+          t,
+          r,
+          img: img(imgId),
+          d,
+          h,
+          conteudoHtml: corpo.split("\n\n").map(paragrafo => `<p>${paragrafo.trim()}</p>`).join("")
+        });
+      }
+    } catch (erro) {
+      console.error(`Erro ao carregar a notícia ${i}:`, erro);
+    }
+  }
+
+  NEWS = noticiasCarregadas;
+  
+  // Inicializa o site após carregar os dados
+  inicializarSite();
+}
 
 
 // 2. CRIAÇÃO DOS CARDS DE NOTÍCIAS
@@ -42,6 +95,7 @@ const card = n => `
 // 3. PÁGINA INICIAL
 
 function renderHome() {
+  if (NEWS.length === 0) return;
   const h = NEWS[0];
 
   // Notícia principal
@@ -119,7 +173,6 @@ function renderCat(c) {
 
 function renderArt(id) {
   const n = NEWS.find(x => x.id == id);
-
   const artigo = $("#art");
 
   if (!artigo) return;
@@ -145,23 +198,7 @@ function renderArt(id) {
 
       <p><strong>${n.r}</strong></p>
 
-      <p>
-        O avanço da inteligência artificial tem provocado
-        mudanças rápidas em diversos setores. Especialistas
-        destacam que os benefícios são significativos, mas
-        exigem atenção à transparência, à segurança e à inclusão.
-      </p>
-
-      <p>
-        Segundo pesquisadores, o próximo passo é garantir
-        que essas ferramentas sejam acessíveis a toda a população,
-        com regras claras de uso e proteção de dados pessoais.
-      </p>
-
-      <p>
-        O IA em Foco seguirá acompanhando os desdobramentos
-        deste tema.
-      </p>
+      ${n.conteudoHtml}
     </div>
   `;
 }
@@ -200,7 +237,6 @@ const verifyHTML = `
   </div>
 `;
 
-// Função chamada pelo formulário
 window.verificar = function(event, formulario) {
   event.preventDefault();
 
@@ -247,14 +283,12 @@ window.verificar = function(event, formulario) {
 };
 
 
-
 // 7. NAVEGAÇÃO ENTRE AS PÁGINAS
 
 function route() {
   const caminho = decodeURIComponent(location.hash.replace(/^#\/?/, ""));
   const p = caminho.split("/");
 
-  // Atualiza o destaque do menu conforme a categoria atual.
   document.querySelectorAll("nav a").forEach(link => {
     const rota = link.dataset.r || "";
     const categoriaAtual = p[0] === "categoria" ? p[1] : "";
@@ -285,7 +319,6 @@ function route() {
   if (window.WikIAMotion) {
     window.WikIAMotion.showPage(page);
   } else {
-    // Fallback caso o arquivo de animações não seja carregado.
     document.querySelectorAll(".page").forEach(item => {
       item.classList.toggle("active", item === page);
     });
@@ -310,29 +343,21 @@ if (hoje) {
 
 // 9. INICIALIZAÇÃO DO SITE
 
-// Carrega as notícias da página inicial
-renderHome();
+function inicializarSite() {
+  renderHome();
 
-// Carrega a ferramenta de verificação na home
-const verifyHome = $("#verify-home");
+  const verifyHome = $("#verify-home");
+  if (verifyHome) verifyHome.innerHTML = verifyHTML;
 
-if (verifyHome) {
-  verifyHome.innerHTML = verifyHTML;
+  const verifyPage = $("#verify-page");
+  if (verifyPage) verifyPage.innerHTML = verifyHTML;
+
+  window.addEventListener("hashchange", route);
+  route();
 }
 
-// Carrega a ferramenta na página própria
-const verifyPage = $("#verify-page");
-
-if (verifyPage) {
-  verifyPage.innerHTML = verifyHTML;
-}
-
-// Escuta mudanças no endereço
-window.addEventListener("hashchange", route);
-
-// Abre a página inicial ou a rota atual
-route();
-
+// Inicia o processo buscando os arquivos Markdown
+carregarNoticias();
 
 
 // 10. INICIALIZAÇÃO DO VLIBRAS
