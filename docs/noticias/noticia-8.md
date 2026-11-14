@@ -1,0 +1,10 @@
+---
+id: 8
+cat: "Educação"
+t: "Universidades criam guias para uso de IA em trabalhos"
+r: "Instituições buscam equilíbrio entre inovação e integridade acadêmica."
+img: "photo-1523050854058-8df90110c9f1"
+d: "17 out 2026"
+h: "15:00"
+---
+O avanço da inteligência artificial tem provocado mudanças rápidas em diversos setores. Especialistas destacam que os benefícios são significativos, mas exigem atenção à transparência, à segurança e à inclusão.

@@ -1,0 +1,10 @@
+---
+id: 10
+cat: "Ética"
+t: "Deepfakes: como identificar vídeos manipulados"
+r: "Especialistas listam sinais que ajudam a reconhecer conteúdo falso."
+img: "photo-1633265486064-086b219458ec"
+d: "16 out 2026"
+h: "13:40"
+---
+O avanço da inteligência artificial tem provocado mudanças rápidas em diversos setores. Especialistas destacam que os benefícios são significativos, mas exigem atenção à transparência, à segurança e à inclusão.

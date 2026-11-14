@@ -1,0 +1,10 @@
+---
+id: 2
+cat: "Saúde"
+t: "IA ajuda médicos a detectar câncer de pulmão mais cedo"
+r: "Sistema analisa tomografias e aponta nódulos que passariam despercebidos."
+img: "photo-1576091160550-2173dba999ef"
+d: "20 out 2026"
+h: "07:55"
+---
+O avanço da inteligência artificial tem provocado mudanças rápidas em diversos setores. Especialistas destacam que os benefícios são significativos, mas exigem atenção à transparência, à segurança e à inclusão.

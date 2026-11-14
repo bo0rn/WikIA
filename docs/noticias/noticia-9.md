@@ -1,0 +1,10 @@
+---
+id: 9
+cat: "Negócios"
+t: "Investimentos em startups de IA batem recorde na América Latina"
+r: "Brasil lidera em número de rodadas no último trimestre."
+img: "photo-1551288049-bebda4e38f71"
+d: "17 out 2026"
+h: "10:25"
+---
+O avanço da inteligência artificial tem provocado mudanças rápidas em diversos setores. Especialistas destacam que os benefícios são significativos, mas exigem atenção à transparência, à segurança e à inclusão.
