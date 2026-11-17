@@ -1,4 +1,4 @@
-
+/* ===== 1. CONFIGURAÇÕES GERAIS E RESET ===== */
 :root {
     color-scheme: dark;
     /* Identidade visual: azul-marinho profundo com acentos em roxo. */
@@ -38,18 +38,14 @@ img {
 .wrap {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 14px 90px;
 }
 /* Tipografia de títulos */
- h1, h2, h3 {
+h1, h2, h3 {
     font-family: Fraunces, Georgia, serif;
     line-height: 1.15;
 }
-/* Link de acessibilidade para pular para o conteúdo (aparece ao focar via teclado) */
-.skip {
-    position: absolute;
-    left: -999px;
-}
+
 .skip:focus {
     left: 10px;
     top: 10px;
@@ -58,6 +54,8 @@ img {
     padding: 8px;
     z-index: 99;
 }
+
+/* ===== 2. CABEÇALHO, LOGO E NAVEGAÇÃO ===== */
 
 /* 2. COMPONENTES DO TOPO (BARRA SUPERIOR E CABEÇALHO) */
 
@@ -83,9 +81,9 @@ header.site {
 header.site .wrap {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 20px;
-    padding: 14px 20px;
+    padding: 14px 5px;
 }
 /* Logotipo do site */
 .logo {
@@ -95,17 +93,16 @@ header.site .wrap {
     color: inherit;
     white-space: nowrap;
     line-height: 0;
+    margin-left: -140px;
 }
-
 .logo-img {
-    width: 118px;
+    width: 120px;
     max-width: 100%;
     height: auto;
     object-fit: contain;
     display: block;
     transition: transform .28s ease;
 }
-
 .logo:hover .logo-img {
     transform: scale(1.04);
 }
@@ -118,7 +115,7 @@ header.site .wrap {
 /* Navegação principal */
 nav ul {
     display: flex;
-    gap: 8px;
+    gap: 16px;
     list-style: none;
     flex-wrap: wrap;
 }
@@ -161,9 +158,11 @@ nav a.active {
     cursor: pointer;
 }
 
+/* ===== 3. CONTEÚDO PRINCIPAL E DESTAQUE ===== */
+
 /* 3. LAYOUT PRINCIPAL E SEÇÃO DE DESTAQUE (HERO) */
 main {
-    padding: 28px 0 60px;
+    padding: 28px 0 40px;
 }
 /* Sistema de abas/páginas */
 .page {
@@ -174,21 +173,25 @@ main {
 }
  /* Grid principal da página inicial */
 .hero-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 24px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
 /* Bloco Hero (Banner principal) */
 .hero {
     position: relative;
+    width: 85%;
+    max-width: 1000px;
+    min-height: 450px;
+    margin: 0 auto;
     border-radius: var(--radius);
     overflow: hidden;
-    min-height: 440px;
     color: #fff;
     display: flex;
     align-items: flex-end;
 }
 .hero img {
+    object-position: center;
     position: absolute;
     inset: 0;
     width: 100%;
@@ -201,6 +204,7 @@ main {
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, rgba(9, 14, 37, .08) 10%, rgba(10, 13, 37, .94) 100%);
+
 }
 .hero .txt {
     position: relative;
@@ -273,6 +277,8 @@ aside.novo h2 {
 .novo a:hover {
     text-decoration: underline;
 }
+/* ===== 4. SEÇÕES, CARDS E FILTROS ===== */
+
 /* 4. SEÇÕES, GRIDS DE CARDS E FILTROS */
 .section-title {
     display: flex;
@@ -286,9 +292,15 @@ aside.novo h2 {
     font-size: 1.6rem;
 }
 .section-title a {
-    color: var(--accent);
-    font-weight: 700;
-    font-size: .9rem;
+    display: inline-block;
+    padding: 8px 16px;
+    color: #d5c5ff;
+    background: #1b2850;
+    border: 1px solid #51409a;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
 }
 /* Grid flexível para os cartões */
 .grid {
@@ -358,6 +370,49 @@ aside.novo h2 {
     background-color: #243663;
     color: #fff;
 }
+/*Barra de pesquisa centralizar à direta*/
+.input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 240px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+/*Barra de pesquisa --- campo de pesquisa*/
+.input-field {
+    width: 100%;
+    height: 42px;
+    padding: 10px 14px 10px 42px;
+    background: #101b3b;
+    color: #f3f5ff;
+    border: 1px solid #465780;
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.input-field::placeholder {
+    color: #9eacce;
+}
+
+.input-field:focus {
+    border-color: #895cf3;
+    box-shadow: 0 0 10px rgba(137, 92, 243, 0.35);
+}
+
+/*Icone da barra de pesquisa*/
+.input-icon {
+    position: absolute;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    color: #a9b6d5;
+    pointer-events: none;
+}
+
+/* ===== 5. VERIFICADOR, ARTIGOS E SOBRE ===== */
 
 /*  5. MÓDULO VERIFICADOR E PÁGINAS DE CONTEÚDO (ARTIGOS E SOBRE) */
 
@@ -419,38 +474,53 @@ aside.novo h2 {
 }
 /* Página de Artigo individual */
 .article {
-    max-width: 760px;
-    margin: 0 auto;
-    background-color: var(--card);
-    border-radius: var(--radius);
-    overflow: hidden;
-    border: 1px solid var(--line);
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
 }
 .article img {
+    display: block;
     width: 100%;
-    aspect-ratio: 16/8;
+    height: clamp(320px, 48vw, 600px);
     object-fit: cover;
+    border-radius: 0;
 }
 .article .body {
-    padding: 28px;
+    width: min(1100px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 36px 0;
 }
 .article h1 {
-    font-size: 2.2rem;
-    margin: 10px 0;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin: 16px 0;
 }
 .article p {
-    margin-bottom: 14px;
-    font-size: 1.08rem;
+    margin-bottom: 24px;
+    font-size: 1.15rem;
+    line-height: 1.9;
 }
 .back {
     display: inline-block;
     margin-bottom: 16px;
-    font-weight: 700;
-    color: var(--accent);
+    padding: 8px 16px;
+    color: #d5c5ff;
+    background: #1b2850;
+    border: 1px solid #51409a;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
     cursor: pointer;
-    background: none;
-    border: 0;
-    font-size: 1rem;
+    transition: 0.3s ease;
+}
+.back:hover {
+   filter: brightness(.92);
+
 }
 /* Página "Sobre" */
 .about {
@@ -467,23 +537,41 @@ aside.novo h2 {
 .about p {
     margin-bottom: 12px;
 }
+/* ===== 6. RODAPÉ ===== */
+
 /* 6. RODAPÉ (FOOTER) */
-footer {
-    background-color: #070b1a;
-    color: #b9c3df;
-    padding: 36px 0;
-    font-size: .92rem;
+.footer-brand .brand-signature {
+    margin-bottom: 0;
+}
+
+.footer-brand .logo {
+    margin-left: 0;
 }
 footer .wrap {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
+    flex-wrap: nowrap;
+    gap: 20px;
+    padding-left: 10px;
 }
-footer .logo {
-    color: #fff;
-    font-size: 1.4rem;
+.footer-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    gap: 12px;
+    margin-left: 0;
 }
+.footer-info {
+    margin-left: auto;
+    white-space: nowrap;
+    text-align: right;
+    font-size: 13px;
+}
+/* ===== 7. RESPONSIVIDADE ===== */
 
 /* 7. MEDIA QUERIES (RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS) */
 @media (max-width: 900px) {
@@ -520,7 +608,8 @@ header.site .btn {
     min-height: 360px;
 }
 }
-  
+
+/* ===== 8. AJUSTES VISUAIS COMPLEMENTARES ===== */
 
 /* Tema azul-escuro e roxo: acabamentos e estados interativos. */
 body {
@@ -587,16 +676,16 @@ a:focus-visible, button:focus-visible, .chip:focus-visible {
     outline-offset: 3px;
 }
 @media (max-width: 900px) {
-    nav { background: #141e3d; }
+nav { background: #141e3d; }
 }
 
+/* ===== 9. MICROINTERAÇÕES E ANIMAÇÕES ===== */
 
 /* ── Microinterações e transições entre rotas do portal de notícias ── */
 :root { --motion-ease: cubic-bezier(.22, 1, .36, 1); }
-
 @keyframes wikia-result-enter {
-    from { opacity: 0; transform: translateY(8px); }
-    to   { opacity: 1; transform: translateY(0); }
+from { opacity: 0; transform: translateY(8px); }
+to   { opacity: 1; transform: translateY(0); }
 }
 
 /* As transições de rota e entrada dos cards são executadas em motion.js. */
@@ -622,15 +711,14 @@ nav a,
 .back:hover,
 .section-title a:hover { color: #d8c9ff; }
 .back:hover { transform: translateX(-3px); }
-
 .card {
     transition: transform 330ms var(--motion-ease),
                 border-color 280ms ease, box-shadow 330ms ease;
 }
 @media (hover: hover) {
-    .card:hover { transform: translateY(-6px); }
-    .card:hover img { transform: scale(1.045); }
-    nav a:hover { transform: translateY(-1px); }
+.card:hover { transform: translateY(-6px); }
+.card:hover img { transform: scale(1.045); }
+nav a:hover { transform: translateY(-1px); }
 }
 .card img { transition: transform 540ms var(--motion-ease); }
 .card:focus-visible {
@@ -639,17 +727,16 @@ nav a,
 }
 .novo li { transition: padding-left 240ms var(--motion-ease); }
 @media (hover: hover) {
-    .novo li:hover { padding-left: 6px; }
+.novo li:hover { padding-left: 6px; }
 }
 .hero img { transition: transform 800ms var(--motion-ease); }
 @media (hover: hover) {
-    .hero:hover img { transform: scale(1.028); }
+.hero:hover img { transform: scale(1.028); }
 }
 .result.show,
 #verify-result:not(:empty) { animation: wikia-result-enter 350ms var(--motion-ease) both; }
-
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+*, *::before, *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
@@ -659,62 +746,23 @@ nav a,
 
 /* Menu mobile: entrada suave com classe controlada pelo JavaScript. */
 @media (max-width: 900px) {
-  nav.open { animation: wikia-menu-enter 250ms cubic-bezier(.22,1,.36,1) both; }
-  @keyframes wikia-menu-enter {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
+nav.open { animation: wikia-menu-enter 250ms cubic-bezier(.22,1,.36,1) both; }
+@keyframes wikia-menu-enter {
+from { opacity: 0; transform: translateY(-8px); }
+to { opacity: 1; transform: translateY(0); }
   }
 }
 
-
+/* ===== 10. AJUSTES FINAIS DA LOGO ===== */
 .footer-logo {
     width: 104px;
 }
-
 .brand-signature {
     margin-bottom: .5rem;
 }
-/* Container da barra de pesquisa */
-.input-container {
-    display: flex;
-    align-items: center;
-    background-color: #182444; /* Um fundo sutil para destacar a barra */
-    padding: 8px 16px;
-    border-radius: 24px;
-    width: 100%;
-    max-width: 300px;
-    gap: 8px;
-    border: 1px solid #334367; /* Opcional: borda leve */
-}
-
-/* Ícone dentro da barra de pesquisa */
-.input-icon {
-    color: #f3f5ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    width: 24px;
-    height: 24px;
-}
-
-/* Campo de entrada da barra de pesquisa */
-.input-field {
-    flex: 1;
-    border: none;
-    background-color: transparent;
-    font-size: 16px;
-    color: #f3f5ff;
-}
-
-/* Remove outline ao focar */
-.input-field:focus {
-    outline: none;
-}
-
 @media (max-width: 700px) {
-    .logo-img { width: 96px; }
-    .footer-logo { width: 88px; }
+.logo-img { width: 96px; }
+.footer-logo { width: 88px; }
 }
 
 /* Logo PNG transparente, sem cor de fundo ou moldura. */
