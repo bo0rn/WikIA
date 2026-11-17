@@ -375,7 +375,7 @@ aside.novo h2 {
     position: relative;
     display: flex;
     align-items: center;
-    width: 240px;
+    width: 430px;
     margin-left: auto;
     flex-shrink: 0;
 }
@@ -383,7 +383,7 @@ aside.novo h2 {
 .input-field {
     width: 100%;
     height: 42px;
-    padding: 10px 14px 10px 42px;
+    padding: 10px 20px 10px 50px;
     background: #101b3b;
     color: #f3f5ff;
     border: 1px solid #465780;
@@ -405,11 +405,52 @@ aside.novo h2 {
 /*Icone da barra de pesquisa*/
 .input-icon {
     position: absolute;
-    left: 12px;
+    left: 5px;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
+    justify-content: center;
     color: #a9b6d5;
+    border-radius: 50%;
     pointer-events: none;
+    transition:
+        background-color 0.28s ease,
+        color 0.28s ease,
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.28s ease;
+}
+
+/* Adiciona um destaque ao ícone quando o campo de pesquisa está em foco */
+.input-container:focus-within .input-icon {
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    background-color: var(--accent);
+    color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 5px 16px rgba(137, 92, 243, 0.38);
+    animation: searchIconFocus 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes searchIconFocus {
+    0% {
+        transform: scale(0.75) rotate(0deg);
+    }
+    65% {
+        transform: scale(1.12) rotate(-6deg);
+    }
+    100% {
+        transform: scale(1.05) rotate(-4deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .input-container:focus-within .input-icon {
+        animation: none;
+        transform: none;
+    }
 }
 
 /* ===== 5. VERIFICADOR, ARTIGOS E SOBRE ===== */
